@@ -1,0 +1,21 @@
+dependencies:
+- name: influxdb
+  repository: https://helm.influxdata.com/
+  version: 4.12.5
+- name: grafana
+  repository: https://grafana.github.io/helm-charts
+  version: 10.5.13
+- name: loadgen-k6
+  repository: ""
+  version: 0.1.0
+- name: loadgen-jmeter
+  repository: ""
+  version: 0.1.0
+- name: sut-spring-jdbc
+  repository: ""
+  version: 0.1.0
+- name: sut-spring-r2dbc
+  repository: ""
+  version: 0.1.0
+digest: sha256:1f0443097e8eb52735230b27d234c87e9d14867b680fb9494e5963c9cb96999b
+generated: "2026-01-28T09:19:02.462913+03:00"

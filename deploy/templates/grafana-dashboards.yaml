@@ -1,0 +1,13 @@
+{{ if .Values.grafana.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  labels:
+    grafana-dashboards: "1"
+data:
+  jmeter-dashboard.json: |
+{{ .Files.Get "grafana/jmeter-dashboard.json" | indent 4 }}
+  k6-dashboard.json: |
+{{ .Files.Get "grafana/k6-dashboard.json" | indent 4 }}
+{{ end }}

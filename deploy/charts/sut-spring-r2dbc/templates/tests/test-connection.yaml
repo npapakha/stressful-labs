@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sut-spring-r2dbc.fullname" . }}-test-connection"
+  labels:
+    {{- include "sut-spring-r2dbc.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "sut-spring-r2dbc.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

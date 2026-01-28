@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "sut-spring-jdbc.fullname" . }}
+  labels:
+    {{- include "sut-spring-jdbc.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "sut-spring-jdbc.selectorLabels" . | nindent 4 }}

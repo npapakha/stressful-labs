@@ -1,0 +1,29 @@
+apiVersion: v2
+name: Stressful Labs Umbrella Chart
+description: A Helm chart for Kubernetes
+
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+
+dependencies:
+  - name: influxdb
+    version: 4.12.5
+    repository: https://helm.influxdata.com/
+    condition: influxdb.enabled
+  - name: grafana
+    version: 10.5.13
+    repository: https://grafana.github.io/helm-charts
+    condition: grafana.enabled
+  - name: loadgen-k6
+    version: 0.1.0
+    condition: loadgen-k6.enabled
+  - name: loadgen-jmeter
+    version: 0.1.0
+    condition: loadgen-jmeter.enabled
+  - name: sut-spring-jdbc
+    version: 0.1.0
+    condition: sut-spring-jdbc.enabled
+  - name: sut-spring-r2dbc
+    version: 0.1.0
+    condition: sut-spring-r2dbc.enabled

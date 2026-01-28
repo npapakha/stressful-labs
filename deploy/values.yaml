@@ -1,0 +1,20 @@
+#
+# Disable all by default
+
+sut-spring-jdbc:
+  enabled: false
+
+sut-spring-r2dbc:
+  enabled: false
+
+loadgen-jmeter:
+  enabled: false
+
+loadgen-k6:
+  enabled: false
+
+grafana:
+  enabled: false
+
+influxdb:
+  enabled: false

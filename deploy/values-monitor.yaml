@@ -1,0 +1,42 @@
+influxdb:
+  enabled: true
+  image:
+    repository: arm64v8/influxdb
+    tag: 1.12-alpine
+  fullnameOverride: influxdb
+  persistence:
+    enabled: false
+  initScripts:
+    enabled: true
+    scripts:
+      init.iql: |-
+        CREATE DATABASE "jmeter";
+        CREATE DATABASE "k6";
+
+grafana:
+  enabled: true
+  fullnameOverride: grafana
+  adminUser: admin
+  adminPassword: admin
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana-dashboards
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: jmeter-influxdb
+          uid: jmeter-influxdb
+          type: influxdb
+          access: proxy
+          url: http://influxdb:8086
+          isDefault: false
+          database: jmeter
+        - name: k6-influxdb
+          uid: k6-influxdb
+          type: influxdb
+          access: proxy
+          url: http://influxdb:8086
+          isDefault: false
+          database: k6
