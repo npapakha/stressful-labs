@@ -1,8 +1,5 @@
 influxdb:
   enabled: true
-  image:
-    repository: arm64v8/influxdb
-    tag: 1.12-alpine
   fullnameOverride: influxdb
   persistence:
     enabled: false

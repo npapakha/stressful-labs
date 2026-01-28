@@ -1,26 +1,36 @@
 .PHONY: preInstall installMonitor uninstallMonitor portForward portForwardStop portForwardStart
 
 
-MONITOR_RELEASE				= sl-monitor
-MONITOR_NAMESPACE 			= sl-monitor
+MONITOR_RELEASE				= ss-monitor
+MONITOR_NAMESPACE 			= ss-monitor
 GRAFANA_SERVICE_NAME		= service/grafana
 GRAFANA_PRIVATE_PORT		= 80
 GRAFANA_PUBLIC_PORT			= 3000
 GRAFANA_USERNAME			= admin
 GRAFANA_PASSWORD			= admin
 
+ARCH := $(shell uname -m)
+
+EXTRA_HELM_ARGS :=
+ifeq ($(ARCH),arm64)
+	EXTRA_HELM_ARGS += --set influxdb.image.repository=arm64v8/influxdb
+	EXTRA_HELM_ARGS += --set influxdb.image.tag=1.12-alpine
+endif
+
 preInstall:
 	cd ./deploy && helm dependency update
 
 installMonitor: preInstall
 	helm install -n $(MONITOR_NAMESPACE) $(MONITOR_RELEASE) ./deploy  \
-		--wait --create-namespace \
 		--values ./deploy/values-monitor.yaml \
 		--set grafana.adminUser=$(GRAFANA_USERNAME) \
-		--set grafana.adminPassword=$(GRAFANA_PASSWORD)
+		--set grafana.adminPassword=$(GRAFANA_PASSWORD) \
+		$(EXTRA_HELM_ARGS) \
+		--create-namespace \
+		--wait
 
 uninstallMonitor:
-	helm uninstall $(MONITOR_RELEASE) -n $(MONITOR_NAMESPACE)
+	@helm uninstall $(MONITOR_RELEASE) -n $(MONITOR_NAMESPACE) &> /dev/null || true
 
 portForward: portForwardStop portForwardStart
 
