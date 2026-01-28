@@ -12,6 +12,8 @@ influxdb:
       init.iql: |-
         CREATE DATABASE "jmeter";
         CREATE DATABASE "k6";
+        CREATE DATABASE "sut-spring-jdbc";
+        CREATE DATABASE "sut-spring-r2dbc";
 
 grafana:
   enabled: true

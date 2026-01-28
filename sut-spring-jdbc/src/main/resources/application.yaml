@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: sut-spring-jdbc
+
+management:
+  influx:
+    metrics:
+      export:
+        enabled: ${METRICS_EXPORT_ENABLED:false}
+        uri: ${METRICS_EXPORT_URI:http://localhost:8086}
+        db: ${METRICS_EXPORT_DB:sut-spring-jdbc}
