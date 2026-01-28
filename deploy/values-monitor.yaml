@@ -16,8 +16,6 @@ influxdb:
 grafana:
   enabled: true
   fullnameOverride: grafana
-  adminUser: admin
-  adminPassword: admin
   sidecar:
     dashboards:
       enabled: true
