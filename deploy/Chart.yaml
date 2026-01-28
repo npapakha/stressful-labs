@@ -1,5 +1,5 @@
 apiVersion: v2
-name: Stressful Labs Umbrella Chart
+name: Stressful Sandbox Umbrella Chart
 description: A Helm chart for Kubernetes
 
 type: application

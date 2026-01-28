@@ -1,4 +1,4 @@
-package stressful.labs;
+package stressful.sandbox;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

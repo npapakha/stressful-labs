@@ -1,13 +1,13 @@
-package stressful.labs;
+package stressful.sandbox;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SutSpringR2dbcApplication {
+public class SutSpringJdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SutSpringR2dbcApplication.class, args);
+        SpringApplication.run(SutSpringJdbcApplication.class, args);
     }
 
 }

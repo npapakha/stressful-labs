@@ -5,7 +5,7 @@ plugins {
     id("org.graalvm.buildtools.native") version "0.11.4"
 }
 
-group = "stressful.labs"
+group = "stressful.sandbox"
 version = "0.0.1-SNAPSHOT"
 description = "sut-spring-r2dbc"
 

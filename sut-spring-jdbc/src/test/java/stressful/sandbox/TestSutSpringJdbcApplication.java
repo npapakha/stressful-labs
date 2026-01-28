@@ -1,4 +1,4 @@
-package stressful.labs;
+package stressful.sandbox;
 
 import org.springframework.boot.SpringApplication;
 

@@ -1,4 +1,4 @@
-rootProject.name = "stressful-labs"
+rootProject.name = "stressful-sandbox"
 
 include(":sut-spring-jdbc")
 include(":sut-spring-r2dbc")
